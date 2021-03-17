@@ -145,7 +145,6 @@
             this.lblWord.Name = "lblWord";
             this.lblWord.Size = new System.Drawing.Size(501, 47);
             this.lblWord.TabIndex = 10;
-            this.lblWord.Text = "__ __ __ __ __ __ __ __ __";
             this.lblWord.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // Form1

@@ -15,10 +15,14 @@ namespace Hangman_Lite
         Random generator = new Random();
         List<string> words = new List<string>();
         List<string> guessedletters = new List<string>();
+        List<string> feedback = new List<string>();
         int guesses = 0;
         int difficulty = 0; // 0 = Easy
-        string guess = "";
-        string chosen = "";
+        int placement;
+        string guess;
+        string chosenword = "";
+        string modifiedword;
+        string emptyslot = "__ ";
         public Form1()
         {
             InitializeComponent();
@@ -31,7 +35,12 @@ namespace Hangman_Lite
 
         private void btnEasy_Click(object sender, EventArgs e)
         {
-            lblWord.Text = "__ __ __ __ __";
+            feedback.Clear();
+            for (int i = 0; i <= 4; i++)
+                feedback.Add(emptyslot);
+            lstLetters.DataSource = feedback;
+            lblWord.Text = string.Join("", feedback);
+            //lblWord.Text = emptyslot + emptyslot + emptyslot + emptyslot+ emptyslot;
             words.Add("CHINA");
             words.Add("SCALE");
             words.Add("JOKER");
@@ -54,9 +63,9 @@ namespace Hangman_Lite
             words.Add("QUEUE");
             words.Add("PAINT");
             words.Add("TABLE");
-            lstLetters.DataSource = words;
-            chosen = words[generator.Next(23)];
-            lblTitle.Text = chosen;
+            //lstLetters.DataSource = words;
+            chosenword = words[generator.Next(23)];
+            lblTitle.Text = chosenword;
             txtInput.Visible = true;
             btnGuess.Visible = true;
 
@@ -65,17 +74,42 @@ namespace Hangman_Lite
         private void btnGuess_Click(object sender, EventArgs e)
         {
             guess = txtInput.Text.ToUpper();
-            if (chosen.IndexOf(guess) >= 0)
+            if (chosenword.IndexOf(guess) >= 0)
             {
-                chosen.Remove(chosen.IndexOf(guess));
-                guessedletters.Add(guess);
-                if (chosen.IndexOf(guess) == 0)
+                for (int i = 0; i <= 5; i++)
                 {
-                    if 
-                    lblWord.Text = (guess + " __ __ __ __");
+                    placement = chosenword.IndexOf(guess);
+                    //chosenword.Remove(chosenword.IndexOf(guess));
+                    System.Text.StringBuilder firstbuilder = new System.Text.StringBuilder(chosenword);
+                    System.Text.StringBuilder secondbuilder = new System.Text.StringBuilder(modifiedword);
+                    if (i == 0)
+                    {
+                        firstbuilder[placement] = Convert.ToChar("1");
+                        modifiedword = firstbuilder.ToString();
+                    }
+                    else
+                    {
+                        secondbuilder[placement] = Convert.ToChar("1");
+                        modifiedword = secondbuilder.ToString();
+                    }
+                    lblInstructions.Text = modifiedword;
+                    feedback.RemoveAt(placement);
+                    feedback.Insert(placement, guess);
                 }
+                lblWord.Text = string.Join("", feedback);
+                guessedletters.Add(guess);
+                //if (chosenword.IndexOf(guess) == 0)
+                //{
+                //    //if   
+                //    //lblWord.Text = (guess + " __ __ __ __");
+                //}
+            }
+            else
+            {
+                guessedletters.Add(guess);
                 lstLetters.DataSource = null;
-                lstLetters.DataSource = words;
+                lstLetters.DataSource = guessedletters;
+                guesses += 1;
             }
         }
 
