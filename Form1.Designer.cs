@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblInstructions = new System.Windows.Forms.Label();
@@ -40,6 +41,8 @@
             this.btnNormal = new System.Windows.Forms.Button();
             this.btnEasy = new System.Windows.Forms.Button();
             this.lblWord = new System.Windows.Forms.Label();
+            this.lblCounter = new System.Windows.Forms.Label();
+            this.tmrColour = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imgHang)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,9 +67,11 @@
             // 
             // imgHang
             // 
+            this.imgHang.Image = global::Hangman_Lite.Properties.Resources.hangman_empty;
             this.imgHang.Location = new System.Drawing.Point(30, 91);
             this.imgHang.Name = "imgHang";
-            this.imgHang.Size = new System.Drawing.Size(305, 247);
+            this.imgHang.Size = new System.Drawing.Size(281, 250);
+            this.imgHang.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgHang.TabIndex = 2;
             this.imgHang.TabStop = false;
             // 
@@ -99,47 +104,54 @@
             // 
             // btnGuess
             // 
+            this.btnGuess.AutoSize = true;
             this.btnGuess.Enabled = false;
             this.btnGuess.Location = new System.Drawing.Point(630, 364);
             this.btnGuess.Name = "btnGuess";
-            this.btnGuess.Size = new System.Drawing.Size(67, 20);
+            this.btnGuess.Size = new System.Drawing.Size(67, 23);
             this.btnGuess.TabIndex = 6;
             this.btnGuess.Text = "Guess";
             this.btnGuess.UseVisualStyleBackColor = true;
             this.btnGuess.Visible = false;
             this.btnGuess.Click += new System.EventHandler(this.btnGuess_Click);
+            this.btnGuess.MouseHover += new System.EventHandler(this.btnGuess_MouseHover);
             // 
             // btnHard
             // 
-            this.btnHard.Location = new System.Drawing.Point(367, 111);
+            this.btnHard.BackColor = System.Drawing.Color.Red;
+            this.btnHard.Location = new System.Drawing.Point(367, 108);
             this.btnHard.Name = "btnHard";
             this.btnHard.Size = new System.Drawing.Size(108, 41);
             this.btnHard.TabIndex = 7;
             this.btnHard.Text = "Hard";
-            this.btnHard.UseVisualStyleBackColor = true;
+            this.btnHard.UseVisualStyleBackColor = false;
+            this.btnHard.Click += new System.EventHandler(this.btnHard_Click);
             // 
             // btnNormal
             // 
+            this.btnNormal.BackColor = System.Drawing.Color.Yellow;
             this.btnNormal.Location = new System.Drawing.Point(367, 61);
             this.btnNormal.Name = "btnNormal";
             this.btnNormal.Size = new System.Drawing.Size(108, 41);
             this.btnNormal.TabIndex = 8;
             this.btnNormal.Text = "Normal";
-            this.btnNormal.UseVisualStyleBackColor = true;
+            this.btnNormal.UseVisualStyleBackColor = false;
+            this.btnNormal.Click += new System.EventHandler(this.btnNormal_Click);
             // 
             // btnEasy
             // 
+            this.btnEasy.BackColor = System.Drawing.Color.Lime;
             this.btnEasy.Location = new System.Drawing.Point(367, 12);
             this.btnEasy.Name = "btnEasy";
             this.btnEasy.Size = new System.Drawing.Size(108, 41);
             this.btnEasy.TabIndex = 9;
             this.btnEasy.Text = "Easy";
-            this.btnEasy.UseVisualStyleBackColor = true;
+            this.btnEasy.UseVisualStyleBackColor = false;
             this.btnEasy.Click += new System.EventHandler(this.btnEasy_Click);
             // 
             // lblWord
             // 
-            this.lblWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWord.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.lblWord.Location = new System.Drawing.Point(12, 394);
             this.lblWord.Name = "lblWord";
@@ -147,11 +159,28 @@
             this.lblWord.TabIndex = 10;
             this.lblWord.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
+            // lblCounter
+            // 
+            this.lblCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCounter.Location = new System.Drawing.Point(30, 357);
+            this.lblCounter.Name = "lblCounter";
+            this.lblCounter.Size = new System.Drawing.Size(305, 27);
+            this.lblCounter.TabIndex = 11;
+            this.lblCounter.Text = "Guesses remaining : 3";
+            this.lblCounter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tmrColour
+            // 
+            this.tmrColour.Interval = 50;
+            this.tmrColour.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblCounter);
             this.Controls.Add(this.lblWord);
             this.Controls.Add(this.btnEasy);
             this.Controls.Add(this.btnNormal);
@@ -186,6 +215,8 @@
         private System.Windows.Forms.Button btnNormal;
         private System.Windows.Forms.Button btnEasy;
         private System.Windows.Forms.Label lblWord;
+        private System.Windows.Forms.Label lblCounter;
+        private System.Windows.Forms.Timer tmrColour;
     }
 }
 

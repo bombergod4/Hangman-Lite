@@ -83,5 +83,23 @@
   <ItemGroup>
     <None Include="Resources\iconfinder_Hangman-Game-grey_190312.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hangman_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hangman_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hangman_dead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hangman_empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\[ONTIVA.COM]-[CUTTER]-Trivia Murder Party_ Final Round Music-HQ.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fixed Stage 1.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
