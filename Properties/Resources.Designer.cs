@@ -118,5 +118,14 @@ namespace Hangman_Lite.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Stage_2 {
+            get {
+                return ResourceManager.GetStream("Stage_2", resourceCulture);
+            }
+        }
     }
 }

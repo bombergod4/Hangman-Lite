@@ -136,4 +136,7 @@
   <data name="iconfinder_Hangman_Game_grey_190312" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_Hangman-Game-grey_190312.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Stage_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Stage 2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

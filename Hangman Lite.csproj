@@ -101,5 +101,8 @@
   <ItemGroup>
     <None Include="Resources\Fixed Stage 1.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stage 2.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
