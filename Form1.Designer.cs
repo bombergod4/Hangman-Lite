@@ -67,7 +67,6 @@
             // 
             // imgHang
             // 
-            this.imgHang.Image = global::Hangman_Lite.Properties.Resources.hangman_empty;
             this.imgHang.Location = new System.Drawing.Point(30, 91);
             this.imgHang.Name = "imgHang";
             this.imgHang.Size = new System.Drawing.Size(281, 250);

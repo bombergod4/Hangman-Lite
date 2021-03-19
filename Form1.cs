@@ -19,7 +19,6 @@ namespace Hangman_Lite
         bool buttonmove = false;
         bool redup = false;
         int guesses = 0;
-        int difficulty = 0; // 0 = Easy
         int placement;
         int redvalue = 192;
         int buttoncounter = 4;
@@ -77,10 +76,10 @@ namespace Hangman_Lite
             //lstLetters.DataSource = words;
             chosenword = words[generator.Next(22)];
             //lblTitle.Text = chosenword;
-            guesses = 3;
+            guesses = 4;
             buttoncounter = 4;
             lblCounter.Text = ("Guesses remaining : " + guesses);
-            imgHang.Image = Properties.Resources.hangman_empty;
+            //imgHang.Image = Properties.Resources.hangman_empty;
             txtInput.Visible = true;
             btnGuess.Visible = true;
             btnEasy.Visible = false;
@@ -137,6 +136,7 @@ namespace Hangman_Lite
                     btnNormal.Visible = true;
                     btnHard.Visible = true;
                     tmrColour.Enabled = false;
+                    snd.Stop();
                 }
 
             }
@@ -146,25 +146,40 @@ namespace Hangman_Lite
                 lstLetters.DataSource = null;
                 lstLetters.DataSource = guessedletters;
                 guesses -= 1;
+                //lblTitle.Text = Convert.ToString(guesses);
                 lblCounter.Text = ("Guesses remaining : " + guesses);
+                if (guesses == 3)
+                {
+                    str = Properties.Resources.Stage_2;
+                    snd = new System.Media.SoundPlayer(str);
+                    snd.PlayLooping();
+                    imgHang.Image = Properties.Resources.hangman_empty;
+                    this.BackColor = Color.FromArgb(192, 192, 0);
+                }
                 if (guesses == 2)
                 {
+                    str = Properties.Resources.Stage_3;
+                    snd = new System.Media.SoundPlayer(str);
+                    snd.PlayLooping();
                     imgHang.Image = Properties.Resources.hangman_1;
-                    this.BackColor = Color.FromArgb(192, 192, 0);
+                    this.BackColor = Color.FromArgb(192, 64, 0);
                 }
                 else if (guesses == 1)
                 {
+                    str = Properties.Resources.Final_Stage;
+                    snd = new System.Media.SoundPlayer(str);
+                    snd.PlayLooping();
                     imgHang.Image = Properties.Resources.hangman_2;
 
                     this.BackColor = Color.FromArgb(192, 50, 50);
                     buttonmove = true;
                     tmrColour.Enabled = true;
-                }
-                    
-                else
+                }     
+                else if (guesses == 0)
                 {
-                    imgHang.Image = Properties.Resources.hangman_empty;
-                    lblCounter.Text = "You lost!";
+                    imgHang.Image = Properties.Resources.hangman_dead;
+                    //lblCounter.Text = "You lost!";
+                    lblCounter.Text = "You bruh!";
                     btnGuess.Enabled = false;
                     btnGuess.Text = "Guess";
                     btnGuess.Location = new Point(630, 364);
@@ -172,6 +187,7 @@ namespace Hangman_Lite
                     btnNormal.Visible = true;
                     btnHard.Visible = true;
                     tmrColour.Enabled = false;
+                    snd.Stop();
                 }    
             }
             txtInput.Clear();
@@ -187,6 +203,9 @@ namespace Hangman_Lite
 
         private void btnNormal_Click(object sender, EventArgs e)
         {
+            str = Properties.Resources.Fixed_Stage_1;
+            snd = new System.Media.SoundPlayer(str);
+            snd.PlayLooping();
             this.BackColor = Color.FromArgb(0, 192, 0);
             feedback.Clear();
             words.Clear();
@@ -221,10 +240,10 @@ namespace Hangman_Lite
             //lstLetters.DataSource = words;
             chosenword = words[generator.Next(22)];
             //lblTitle.Text = chosenword;
-            guesses = 3;
+            guesses = 4;
             buttoncounter = 4;
             lblCounter.Text = ("Guesses remaining : " + guesses);
-            imgHang.Image = Properties.Resources.hangman_empty;
+            //imgHang.Image = Properties.Resources.hangman_empty;
             txtInput.Visible = true;
             btnGuess.Visible = true;
             btnEasy.Visible = false;
@@ -282,6 +301,9 @@ namespace Hangman_Lite
 
         private void btnHard_Click(object sender, EventArgs e)
         {
+            str = Properties.Resources.Fixed_Stage_1;
+            snd = new System.Media.SoundPlayer(str);
+            snd.PlayLooping();
             this.BackColor = Color.FromArgb(0, 192, 0);
             feedback.Clear();
             words.Clear();
@@ -316,10 +338,10 @@ namespace Hangman_Lite
             //lstLetters.DataSource = words;
             chosenword = words[generator.Next(22)];
             //lblTitle.Text = chosenword;
-            guesses = 3;
+            guesses = 4;
             buttoncounter = 4;
             lblCounter.Text = ("Guesses remaining : " + guesses);
-            imgHang.Image = Properties.Resources.hangman_empty;
+            //imgHang.Image = Properties.Resources.hangman_empty;
             txtInput.Visible = true;
             btnGuess.Visible = true;
             btnEasy.Visible = false;

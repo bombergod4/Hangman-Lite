@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Final_Stage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Final Stage.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Fixed_Stage_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fixed Stage 1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -138,5 +141,8 @@
   </data>
   <data name="Stage_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Stage 2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Stage_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Stage 3.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

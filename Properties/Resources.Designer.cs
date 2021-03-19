@@ -63,6 +63,15 @@ namespace Hangman_Lite.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Final_Stage {
+            get {
+                return ResourceManager.GetStream("Final_Stage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream Fixed_Stage_1 {
             get {
                 return ResourceManager.GetStream("Fixed_Stage_1", resourceCulture);
@@ -125,6 +134,15 @@ namespace Hangman_Lite.Properties {
         internal static System.IO.UnmanagedMemoryStream Stage_2 {
             get {
                 return ResourceManager.GetStream("Stage_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Stage_3 {
+            get {
+                return ResourceManager.GetStream("Stage_3", resourceCulture);
             }
         }
     }
