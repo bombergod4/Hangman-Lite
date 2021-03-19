@@ -43,6 +43,7 @@
             this.lblWord = new System.Windows.Forms.Label();
             this.lblCounter = new System.Windows.Forms.Label();
             this.tmrColour = new System.Windows.Forms.Timer(this.components);
+            this.tmrFlicker = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imgHang)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             this.lblInstructions.Name = "lblInstructions";
             this.lblInstructions.Size = new System.Drawing.Size(308, 13);
             this.lblInstructions.TabIndex = 1;
-            this.lblInstructions.Text = "Enter a letter to reveal the hidden word. 3 strikes and you\'re out!";
+            this.lblInstructions.Text = "Enter a letter to reveal the hidden word. 4 strikes and you\'re out!";
             // 
             // imgHang
             // 
@@ -173,6 +174,11 @@
             this.tmrColour.Interval = 50;
             this.tmrColour.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // tmrFlicker
+            // 
+            this.tmrFlicker.Interval = 25;
+            this.tmrFlicker.Tick += new System.EventHandler(this.tmrFlicker_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,6 +222,7 @@
         private System.Windows.Forms.Label lblWord;
         private System.Windows.Forms.Label lblCounter;
         private System.Windows.Forms.Timer tmrColour;
+        private System.Windows.Forms.Timer tmrFlicker;
     }
 }
 

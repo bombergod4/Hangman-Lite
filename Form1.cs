@@ -22,6 +22,7 @@ namespace Hangman_Lite
         int placement;
         int redvalue = 192;
         int buttoncounter = 4;
+        int flickertext;
         string guess;
         string chosenword = "";
         string emptyslot = "__ ";
@@ -79,7 +80,7 @@ namespace Hangman_Lite
             guesses = 4;
             buttoncounter = 4;
             lblCounter.Text = ("Guesses remaining : " + guesses);
-            //imgHang.Image = Properties.Resources.hangman_empty;
+            imgHang.Image = null;
             txtInput.Visible = true;
             btnGuess.Visible = true;
             btnEasy.Visible = false;
@@ -132,10 +133,16 @@ namespace Hangman_Lite
                     btnGuess.Enabled = false;
                     btnGuess.Text = "Guess";
                     btnGuess.Location = new Point(630, 364);
+                    lblTitle.Text = "Welcome to Hangman";
+                    lblTitle.Location = new Point(25, 34);
+                    lblInstructions.Text = "Enter a letter to reveal the hidden word. 4 Strikes and you're out!";
+                    lblUsedLetters.Text = "Used Letters";
+                    lblUsedLetters.Location = new Point(502, 44);
                     btnEasy.Visible = true;
                     btnNormal.Visible = true;
                     btnHard.Visible = true;
                     tmrColour.Enabled = false;
+                    tmrFlicker.Enabled = false;
                     snd.Stop();
                 }
 
@@ -170,23 +177,30 @@ namespace Hangman_Lite
                     snd = new System.Media.SoundPlayer(str);
                     snd.PlayLooping();
                     imgHang.Image = Properties.Resources.hangman_2;
-
                     this.BackColor = Color.FromArgb(192, 50, 50);
                     buttonmove = true;
                     tmrColour.Enabled = true;
+                    tmrFlicker.Enabled = true;
+                    lblTitle.Text = "W̴̙͝e̵̩̿̎l̶̝̣̫͚̎͂c̶̮̺̦̻̔o̴̘̼̹͙̪̝͆̂m̷̯̟̫̦̄e̷͔̯̗̮̐̇͜͝ͅ ̶̲͚̹̬́͜t̸͔̓͘͝ǫ̴̹͌̈́̀͑̕͜ ̸̡̝̻̜͐̔H̸͉͎̻̦̐͛̈́̉a̸͔̻̘̐̚̕ǹ̸̨͙̼̭̅͌͐̾̀͜g̸̢̥͔̤̤̍͌̾m̴̢̛̘̱̝̬̓â̸̛̭̼̲͖̩̝͊̾̍̾n̷̘̘̮͉̎͜";
+                    lblUsedLetters.Text = "Ǔ̵̺s̸̛͎̥̤̒͑̀̕͝ȅ̸͈̮͘d̶̯̼̖͍̩̾̈́ ̶͔͙̈̎L̶̳̬̼͐e̸̫͙̾̐ẗ̷͈̽̈̈́͑̓t̸̡̗̺͙̊e̷͚͙̞̗̤͐͆̀̚r̴͔̤͔͉̒s̵̲̙̞͋̈́́̄̄͘";
                 }     
                 else if (guesses == 0)
                 {
                     imgHang.Image = Properties.Resources.hangman_dead;
-                    //lblCounter.Text = "You lost!";
-                    lblCounter.Text = "You bruh!";
+                    lblCounter.Text = "You lost!";
                     btnGuess.Enabled = false;
                     btnGuess.Text = "Guess";
                     btnGuess.Location = new Point(630, 364);
+                    lblTitle.Text = "Welcome to Hangman";
+                    lblTitle.Location = new Point(25, 34);
+                    lblInstructions.Text = "Enter a letter to reveal the hidden word. 4 Strikes and you're out!";
+                    lblUsedLetters.Text = "Used Letters";
+                    lblUsedLetters.Location = new Point(502, 44);
                     btnEasy.Visible = true;
                     btnNormal.Visible = true;
                     btnHard.Visible = true;
                     tmrColour.Enabled = false;
+                    tmrFlicker.Enabled = false;
                     snd.Stop();
                 }    
             }
@@ -243,7 +257,7 @@ namespace Hangman_Lite
             guesses = 4;
             buttoncounter = 4;
             lblCounter.Text = ("Guesses remaining : " + guesses);
-            //imgHang.Image = Properties.Resources.hangman_empty;
+            imgHang.Image = null;
             txtInput.Visible = true;
             btnGuess.Visible = true;
             btnEasy.Visible = false;
@@ -341,7 +355,7 @@ namespace Hangman_Lite
             guesses = 4;
             buttoncounter = 4;
             lblCounter.Text = ("Guesses remaining : " + guesses);
-            //imgHang.Image = Properties.Resources.hangman_empty;
+            imgHang.Image = null;
             txtInput.Visible = true;
             btnGuess.Visible = true;
             btnEasy.Visible = false;
@@ -350,5 +364,46 @@ namespace Hangman_Lite
             buttonmove = false;
         }
 
+        private void tmrFlicker_Tick(object sender, EventArgs e)
+        {
+            lblTitle.Location = new Point(generator.Next(100), generator.Next(50));
+            lblUsedLetters.Location = new Point(generator.Next(400, 801), generator.Next(45));
+            flickertext = generator.Next(6);
+            if (flickertext == 0)
+                lblInstructions.Text = ("");
+            else if (flickertext == 1)
+                lblInstructions.Text += ("g̷̫͕̗̘̳̙͑i̴̳̎̔̌͋̕v̶̭͋̆͊̅è̸̙̳̒͒ ̵̧͕͖̯̄̀͌̇̇ǘ̶̙̦͒͋͋̀̉p̸̫̝̔ ");
+            else if (flickertext == 2)
+                lblInstructions.Text += ("maybe its  ̷̘͉͋͠ͅ ");
+            else if (flickertext == 3)
+                lblInstructions.Text += ("r̴̨̩̙͗u̸̡͇̲̓͂͂̚n̶͖̝̳̫̖̋̏̃ ");
+            else if (flickertext == 4)
+                lblInstructions.Text += ("D̵̖͖̅İ̵̖̔͐̈̎̂E̵̪̲̤̔̒͂͊͜͝");
+            else if (flickertext == 5)
+                lblInstructions.Text += ("Ȩ̸̧̢̡̫̥̲͍̬̯̗̤̩̦̻̰͈̗͈̭͍͇̦̮͗͊̏̋̓͆̿͗̎̒͆̿͐̋͝͝ͅḐ̶̫̗̥͕̦͚͐̐́̀̈́̍̓͑͛͒͛̌̆̂́̔͗͂̊̾̃̿̑͘͠͝͠G̷̺̥̠͔̻̖̙̳̜̗̼͖̠̘̼͍͉̳̤̺͗́̓͒̔͊̽̆̄̆̏̿̚͜Ę̶̨̛̟̘͚̪͎͚̬̪͙̙̜͕̘̯̪̙̻̟͙̟̙̓́̈̓́͋̓̅̇̏́͊̑̍̀̉̉͘͝͝");
+
+            flickertext = generator.Next(11);
+            if (flickertext == 0)
+                lblCounter.Text = "G̵̨̳̅ử̸̼͉̌͠͝e̶̻͖̬̠͐̄͑̚s̸̱̝̍̃̀͆̚s̵̨̠̫̘͍̈́̇̃̏ȩ̸̝͎̜̳̅̐͂͝s̵̻̺̏ ̴͕͇͊͊̓͛͠ͅR̵̡̪͕͚̗̘̀̾͆̆̽̚e̴̠̋́̀̈́͂͋m̵̦̜̫̻̙͑̆̾a̶͇͇̭̍̓n̷̢̮̞̿̏̍i̵̥̿̀n̶̦̖̮͕̅͘͜ģ̵̥̏̊̎͒͠ ̴̜̯̮͊̂ͅͅ:̵̣͇̥͉̗̊̔̆̿̽̈́ͅ ̸͚̇̔̾͗̕0̸̢̨̧̬̩͔̔͆̍";
+            else if (flickertext == 1)
+                lblCounter.Text = "G̵̨̳̅ử̸̼͉̌͠͝e̶̻͖̬̠͐̄͑̚s̸̱̝̍̃̀͆̚s̵̨̠̫̘͍̈́̇̃̏ȩ̸̝͎̜̳̅̐͂͝s̵̻̺̏ ̴͕͇͊͊̓͛͠ͅR̵̡̪͕͚̗̘̀̾͆̆̽̚e̴̠̋́̀̈́͂͋m̵̦̜̫̻̙͑̆̾a̶͇͇̭̍̓n̷̢̮̞̿̏̍i̵̥̿̀n̶̦̖̮͕̅͘͜ģ̵̥̏̊̎͒͠ ̴̜̯̮͊̂ͅͅ:̵̣͇̥͉̗̊̔̆̿̽̈́ͅ ̸͚̇̔̾͗̕1̵̡̝̖̍́̿̉";
+            else if (flickertext == 2)
+                lblCounter.Text = "G̵̨̳̅ử̸̼͉̌͠͝e̶̻͖̬̠͐̄͑̚s̸̱̝̍̃̀͆̚s̵̨̠̫̘͍̈́̇̃̏ȩ̸̝͎̜̳̅̐͂͝s̵̻̺̏ ̴͕͇͊͊̓͛͠ͅR̵̡̪͕͚̗̘̀̾͆̆̽̚e̴̠̋́̀̈́͂͋m̵̦̜̫̻̙͑̆̾a̶͇͇̭̍̓n̷̢̮̞̿̏̍i̵̥̿̀n̶̦̖̮͕̅͘͜ģ̵̥̏̊̎͒͠ ̴̜̯̮͊̂ͅͅ:̵̣͇̥͉̗̊̔̆̿̽̈́ͅ ̸͚̇̔̾͗̕2̵̨̳̹͔̓͂͆̄̓";
+            else if (flickertext == 3)
+                lblCounter.Text = "G̵̨̳̅ử̸̼͉̌͠͝e̶̻͖̬̠͐̄͑̚s̸̱̝̍̃̀͆̚s̵̨̠̫̘͍̈́̇̃̏ȩ̸̝͎̜̳̅̐͂͝s̵̻̺̏ ̴͕͇͊͊̓͛͠ͅR̵̡̪͕͚̗̘̀̾͆̆̽̚e̴̠̋́̀̈́͂͋m̵̦̜̫̻̙͑̆̾a̶͇͇̭̍̓n̷̢̮̞̿̏̍i̵̥̿̀n̶̦̖̮͕̅͘͜ģ̵̥̏̊̎͒͠ ̴̜̯̮͊̂ͅͅ:̵̣͇̥͉̗̊̔̆̿̽̈́ͅ ̸͚̇̔̾͗̕3̶̟͐̏̓̑̈́";
+            else if (flickertext == 4)
+                lblCounter.Text = "G̵̨̳̅ử̸̼͉̌͠͝e̶̻͖̬̠͐̄͑̚s̸̱̝̍̃̀͆̚s̵̨̠̫̘͍̈́̇̃̏ȩ̸̝͎̜̳̅̐͂͝s̵̻̺̏ ̴͕͇͊͊̓͛͠ͅR̵̡̪͕͚̗̘̀̾͆̆̽̚e̴̠̋́̀̈́͂͋m̵̦̜̫̻̙͑̆̾a̶͇͇̭̍̓n̷̢̮̞̿̏̍i̵̥̿̀n̶̦̖̮͕̅͘͜ģ̵̥̏̊̎͒͠ ̴̜̯̮͊̂ͅͅ:̵̣͇̥͉̗̊̔̆̿̽̈́ͅ ̸͚̇̔̾͗̕4̴̣̠̭͔͍̲̄̍̑";
+            else if (flickertext == 5)
+                lblCounter.Text = "G̵̨̳̅ử̸̼͉̌͠͝e̶̻͖̬̠͐̄͑̚s̸̱̝̍̃̀͆̚s̵̨̠̫̘͍̈́̇̃̏ȩ̸̝͎̜̳̅̐͂͝s̵̻̺̏ ̴͕͇͊͊̓͛͠ͅR̵̡̪͕͚̗̘̀̾͆̆̽̚e̴̠̋́̀̈́͂͋m̵̦̜̫̻̙͑̆̾a̶͇͇̭̍̓n̷̢̮̞̿̏̍i̵̥̿̀n̶̦̖̮͕̅͘͜ģ̵̥̏̊̎͒͠ ̴̜̯̮͊̂ͅͅ:̵̣͇̥͉̗̊̔̆̿̽̈́ͅ ̸͚̇̔̾͗̕5̵̩̬͔̗̉͌͂̀͜͠";
+            else if (flickertext == 6)
+                lblCounter.Text = "G̵̨̳̅ử̸̼͉̌͠͝e̶̻͖̬̠͐̄͑̚s̸̱̝̍̃̀͆̚s̵̨̠̫̘͍̈́̇̃̏ȩ̸̝͎̜̳̅̐͂͝s̵̻̺̏ ̴͕͇͊͊̓͛͠ͅR̵̡̪͕͚̗̘̀̾͆̆̽̚e̴̠̋́̀̈́͂͋m̵̦̜̫̻̙͑̆̾a̶͇͇̭̍̓n̷̢̮̞̿̏̍i̵̥̿̀n̶̦̖̮͕̅͘͜ģ̵̥̏̊̎͒͠ ̴̜̯̮͊̂ͅͅ:̵̣͇̥͉̗̊̔̆̿̽̈́ͅ ̸͚̇̔̾͗̕6̴̨̭̺̲͕̇̽́̄͘";
+            else if (flickertext == 7)
+                lblCounter.Text = "G̵̨̳̅ử̸̼͉̌͠͝e̶̻͖̬̠͐̄͑̚s̸̱̝̍̃̀͆̚s̵̨̠̫̘͍̈́̇̃̏ȩ̸̝͎̜̳̅̐͂͝s̵̻̺̏ ̴͕͇͊͊̓͛͠ͅR̵̡̪͕͚̗̘̀̾͆̆̽̚e̴̠̋́̀̈́͂͋m̵̦̜̫̻̙͑̆̾a̶͇͇̭̍̓n̷̢̮̞̿̏̍i̵̥̿̀n̶̦̖̮͕̅͘͜ģ̵̥̏̊̎͒͠ ̴̜̯̮͊̂ͅͅ:̵̣͇̥͉̗̊̔̆̿̽̈́ͅ ̸͚̇̔̾͗̕7̸̫̹͂";
+            else if (flickertext == 8)
+                lblCounter.Text = "G̵̨̳̅ử̸̼͉̌͠͝e̶̻͖̬̠͐̄͑̚s̸̱̝̍̃̀͆̚s̵̨̠̫̘͍̈́̇̃̏ȩ̸̝͎̜̳̅̐͂͝s̵̻̺̏ ̴͕͇͊͊̓͛͠ͅR̵̡̪͕͚̗̘̀̾͆̆̽̚e̴̠̋́̀̈́͂͋m̵̦̜̫̻̙͑̆̾a̶͇͇̭̍̓n̷̢̮̞̿̏̍i̵̥̿̀n̶̦̖̮͕̅͘͜ģ̵̥̏̊̎͒͠ ̴̜̯̮͊̂ͅͅ:̵̣͇̥͉̗̊̔̆̿̽̈́ͅ ̸͚̇̔̾͗̕8̴̙̘̲̰͈̟̿̓";
+            else if (flickertext == 9)
+                lblCounter.Text = "G̵̨̳̅ử̸̼͉̌͠͝e̶̻͖̬̠͐̄͑̚s̸̱̝̍̃̀͆̚s̵̨̠̫̘͍̈́̇̃̏ȩ̸̝͎̜̳̅̐͂͝s̵̻̺̏ ̴͕͇͊͊̓͛͠ͅR̵̡̪͕͚̗̘̀̾͆̆̽̚e̴̠̋́̀̈́͂͋m̵̦̜̫̻̙͑̆̾a̶͇͇̭̍̓n̷̢̮̞̿̏̍i̵̥̿̀n̶̦̖̮͕̅͘͜ģ̵̥̏̊̎͒͠ ̴̜̯̮͊̂ͅͅ:̵̣͇̥͉̗̊̔̆̿̽̈́ͅ ̸͚̇̔̾͗̕9̸̹̮̮͑̑";
+
+        }
     }
 }
